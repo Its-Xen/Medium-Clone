@@ -75,15 +75,15 @@ TEMPLATES = [
 WSGI_APPLICATION = "medium.wsgi.application"
 
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": "mydatabase",
-    }
-}
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": "mydatabase",
+#     }
+# }
 
 
-# DATABASES = {"default": env.db("DATABASE_URL")}
+DATABASES = {"default": env.db("DATABASE_URL")}
 
 # Setup argon2 password hashers
 PASSWORD_HASHERS = [
@@ -136,3 +136,22 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Handling croos-origin resource sharing
 CORS_URLS_REGEX = r"^api/.*$"
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters":{ # the formatters define what our log statements will look like
+        "verbose":{
+            "format": "%(levelname)s %(name)-12s %(asctime)s %(module)s "
+            "%(process)d %(thread)d %(message)s"
+        }
+    },
+    "handlers": {   # handlers define where log messages will be sent to
+        "console":{
+            "level" : "DEBUG",
+            "class" : "logging.StreamHandler",
+            "formatter" : "verbose",
+        }
+    },
+    "root": {"level" : "INFO", "handlers": ["console"]}
+}
