@@ -6,7 +6,6 @@ set -o pipefail
 
 working_dir="$(dirname ${0})"
 
-
 source "${working_dir}/_sourced/constants.sh"
 source "${working_dir}/_sourced/messages.sh"
 
