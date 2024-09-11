@@ -137,6 +137,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Handling croos-origin resource sharing
 CORS_URLS_REGEX = r"^api/.*$"
 
+AUTH_USER_MODEL = "users.User"
+
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
