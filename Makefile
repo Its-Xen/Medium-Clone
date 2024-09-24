@@ -1,6 +1,6 @@
 # Variables
 DOCKER_COMPOSE = docker compose -f local.yml
-DJANGO_MANAGE = $(DOCKER_COMPOSE) exec api python manage.py
+DJANGO_MANAGE = $(DOCKER_COMPOSE) run --rm api python manage.py
 DB_CONTAINER = postgres
 
 # Default Target (optional)
