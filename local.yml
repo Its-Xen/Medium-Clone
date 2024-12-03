@@ -39,7 +39,7 @@ services:
     image: mailhog/mailhog:v1.0.0
     container_name: mailhog
     ports:
-      - "8025:8025"
+      - "9000:8025"
     networks:
       - medium
 
@@ -94,7 +94,7 @@ services:
       context: ./docker/local/nginx
       dockerfile: Dockerfile
     ports:
-      - "8080:80"
+      - "9001:9001"
     networks:
       - medium
 
