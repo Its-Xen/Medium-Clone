@@ -47,8 +47,8 @@ LOCAL_APPS = [
     "core_apps.common",
     "core_apps.users",
     "core_apps.articles",
-    "core_apps.ratings"
-
+    "core_apps.ratings",
+    "core_apps.bookmarks"
 ]
 
 # and add them together like that
