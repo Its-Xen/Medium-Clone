@@ -94,4 +94,9 @@ isort-diff:
 isort:
 	$(DOCKER_COMPOSE) exec api isort . --skip .venv --skip migrations
 
-# Add More Commands As Needed...
+# ElasticSearch Commands
+search-index:
+	$(DOCKER_COMPOSE) exec api python manage.py search_index --populate
+	
+search-rebuild:
+	$(DOCKER_COMPOSE) exec api python manage.py search_index --rebuild
