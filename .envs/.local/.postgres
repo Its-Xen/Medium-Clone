@@ -3,3 +3,4 @@ POSTGRES_PORT=5432
 POSTGRES_DB=medium
 POSTGRES_USER=xen
 POSTGRES_PASSWORD=secure123
+DATABASE_URL=postgres://xen:secure123@postgres:5432/medium
