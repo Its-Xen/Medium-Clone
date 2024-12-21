@@ -1,5 +1,7 @@
 import json
+
 from rest_framework.renderers import JSONRenderer
+
 """
     The custom renderers allow you to manipulate
     and format the response data in your APIs
@@ -11,32 +13,35 @@ from rest_framework.renderers import JSONRenderer
 """
 
 
-
 class ProfileJSONRender(JSONRenderer):
     """
-        This class use default json renderer to render a profile
+    This class use default json renderer to render a profile
     """
-    charset = 'utf-8'
 
-    def render(self, data, accepted_media_type = None, renderer_context = None):
+    charset = "utf-8"
+
+    def render(self, data, accepted_media_type=None, renderer_context=None):
         status_code = renderer_context["response"].status_code
         errors = data.get("errors", None)
-        
+
         if errors is not None:
             return super(ProfileJSONRender, self).render(data)
-        return json.dumps({"status_code": status_code, "profile": data}) # if any error presents
-    
+        return json.dumps(
+            {"status_code": status_code, "profile": data}
+        )  # if any error presents
+
 
 class ProfilesJSONRender(JSONRenderer):
     """
-        This class use default json renderer to render a list of profiles
+    This class use default json renderer to render a list of profiles
     """
-    charset = 'utf-8'
 
-    def render(self, data, accepted_media_type = None, renderer_context = None):
+    charset = "utf-8"
+
+    def render(self, data, accepted_media_type=None, renderer_context=None):
         status_code = renderer_context["response"].status_code
         errors = data.get("errors", None)
-        
+
         if errors is not None:
             return super(ProfilesJSONRender, self).render(data)
         return json.dumps({"status_code": status_code, "profiles": data})

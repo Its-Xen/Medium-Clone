@@ -76,10 +76,10 @@ restore-db:
 flake8:
 	$(DOCKER_COMPOSE) exec api flake8 .
 
-block-check:
+black-check:
 	$(DOCKER_COMPOSE) exec api black --check --exclude=migrations .
 
-block-diff:
+black-diff:
 	$(DOCKER_COMPOSE) exec api black --diff --exclude=migrations .
 
 black:

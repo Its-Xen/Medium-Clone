@@ -1,5 +1,6 @@
-from pathlib import Path
 from datetime import timedelta
+from pathlib import Path
+
 import environ
 
 env = environ.Env()
@@ -12,7 +13,7 @@ APP_DIR = ROOT_DIR / "core_apps"
 
 DEBUG = env.bool("DJANGO_DEBUG", False)
 
-# We wanna make 2 sections: one for 3rd party and second for local packages 
+# We wanna make 2 sections: one for 3rd party and second for local packages
 DJANGO_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -20,7 +21,7 @@ DJANGO_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # its hook for associating objects and functionality to particular websites 
+    # its hook for associating objects and functionality to particular websites
     # and it's holding place for the domain name and verbose names of our django powered sites
     "django.contrib.sites",
 ]
@@ -61,7 +62,7 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    "corsheaders.middleware.CorsMiddleware", # corsheaders
+    "corsheaders.middleware.CorsMiddleware",  # corsheaders
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -137,7 +138,7 @@ USE_TZ = True
 # this setup for django.contrib.sites
 SITE_ID = 1
 
-# we change our admin url 
+# we change our admin url
 ADMIN_URL = "supersecret/"
 
 
@@ -182,7 +183,7 @@ REST_FRAMEWORK = {
 
 # simple-JWT Conf
 SIMPLE_JWT = {
-    "AUTH_HEADER_TYPES":("Bearer",),
+    "AUTH_HEADER_TYPES": ("Bearer",),
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
     "ROTATE_REFRESH_TOKENS": True,
@@ -193,10 +194,10 @@ SIMPLE_JWT = {
 
 # dj-rest-auth Conf
 REST_AUTH = {
-    "USE_JWT": True, 
+    "USE_JWT": True,
     "JWT_AUTH_COOKIE": "medium-access-token",
     "JWT_AUTH_REFRESH_COOKIE": "medium-refresh-token",
-    "REGISTER_SERIALIZER": "core_apps.users.serializers.CustomRegisterSerializer"
+    "REGISTER_SERIALIZER": "core_apps.users.serializers.CustomRegisterSerializer",
 }
 
 AUTHENTICATION_BACKENDS = [
@@ -216,7 +217,7 @@ ACCOUNT_USERNAME_REQUIRED = False
 
 ELASTICSEARCH_DSL = {
     "default": {
-        "hosts": "es:9200", # based the service of ElasticSearch, where we configure at local.yml
+        "hosts": "es:9200",  # based the service of ElasticSearch, where we configure at local.yml
     }
 }
 
@@ -224,18 +225,18 @@ ELASTICSEARCH_DSL = {
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
-    "formatters":{ # the formatters define what our log statements will look like
-        "verbose":{
+    "formatters": {  # the formatters define what our log statements will look like
+        "verbose": {
             "format": "%(levelname)s %(name)-12s %(asctime)s %(module)s "
             "%(process)d %(thread)d %(message)s"
         }
     },
-    "handlers": {   # handlers define where log messages will be sent to
-        "console":{
-            "level" : "DEBUG",
-            "class" : "logging.StreamHandler",
-            "formatter" : "verbose",
+    "handlers": {  # handlers define where log messages will be sent to
+        "console": {
+            "level": "DEBUG",
+            "class": "logging.StreamHandler",
+            "formatter": "verbose",
         }
     },
-    "root": {"level" : "INFO", "handlers": ["console"]}
+    "root": {"level": "INFO", "handlers": ["console"]},
 }
