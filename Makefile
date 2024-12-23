@@ -100,3 +100,9 @@ search-index:
 	
 search-rebuild:
 	$(DOCKER_COMPOSE) exec api python manage.py search_index --rebuild
+
+# Pytest-Coverage Commands
+coverage:
+	$(DOCKER_COMPOSE) run --rm api pytest -p no:warnings --cov=. -v
+coverage-html:
+	$(DOCKER_COMPOSE) run --rm api pytest -p no:warnings --cov=. --cov-report html
